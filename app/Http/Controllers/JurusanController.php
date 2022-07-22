@@ -122,7 +122,7 @@ class JurusanController extends Controller
      */
     public function destroy($id)
     {
-        //
+    
         $jurusan = Jurusan::findOrFail($id);
         $jurusan->delete();
         return redirect()->route('jurusan.index')->with('succes', 
