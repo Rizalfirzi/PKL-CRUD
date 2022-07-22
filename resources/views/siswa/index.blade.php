@@ -39,13 +39,13 @@
                                                     @method('delete')
                                                     @csrf
                                                     <a href="{{ route('siswa.edit', $data->id) }}"
-                                                        class="btn btn-sm btn-outline-warning">Edit
+                                                        class="btn btn-sm btn-outline-warning">Ubah
                                                     </a> |
                                                     <a href="{{ route('siswa.show', $data->id) }}"
-                                                        class="btn btn-sm btn-outline-info">Show
+                                                        class="btn btn-sm btn-outline-info">Tampilkan
                                                     </a>|
                                                     <button type="submit" class="btn btn-sm btn-outline-danger"
-                                                        onclick="return confirm('Are You Sure?')">Delete</button>
+                                                        onclick="return confirm('apakah kmu yakin ingin menghapus data?')">Hapus</button>
                                                 </form>
                                             </td>
                                         </tr>

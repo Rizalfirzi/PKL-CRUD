@@ -37,11 +37,11 @@
                                         <form action="{{ route('jurusan.destroy', $data->id) }}" method="post">
                                             @method('delete')
                                             @csrf
-                                            <a href="{{ route('jurusan.edit', $data->id) }}" class="btn btn-sm btn-outline-warning">Edit
+                                            <a href="{{ route('jurusan.edit', $data->id) }}" class="btn btn-sm btn-outline-warning">Ubah
                                             </a> |
-                                            <a href="{{ route('jurusan.show', $data->id) }}" class="btn btn-sm btn-outline-info">Show
+                                            <a href="{{ route('jurusan.show', $data->id) }}" class="btn btn-sm btn-outline-info">Tampilkan
                                             </a> |
-                                            <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are You Sure?')">Delete</button>
+                                            <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('apakah kmu yakin ingin menghapus data?')">Delete</button>
                                         </form>
                                     </td>
                                 </tr>
