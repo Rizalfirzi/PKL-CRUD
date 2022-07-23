@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 @include('layouts._flash')
                 <div class="card border-secondary">
-                    <div class="card-header mb-3">Data Siswa
+                    <div class="card-header mb-3"   >Data Siswa
                         <a href="{{ route('siswa.create') }}"
                             class="btn btn-sm btn-primary" style="float: right;">Tambah Data
                         </a>
