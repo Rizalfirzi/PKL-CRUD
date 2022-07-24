@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    selamar, {{ __(Auth::user()->name) }} kamu berhasil login
+                    selamat, {{ __(Auth::user()->name) }} kamu berhasil login
                 </div>
             </div>
         </div>
