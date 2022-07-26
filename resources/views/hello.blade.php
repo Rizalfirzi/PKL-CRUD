@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                     selamat, {{ __(Auth::user()->name) }} kamu berhasil login
+                        
                 </div>
             </div>
         </div>

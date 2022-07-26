@@ -31,7 +31,7 @@
                 </div>
             </div>
         </nav>
-
+<br>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -64,7 +64,7 @@
                                             <td>{{ $data->nis }}</td>
                                             <td>{{ $data->nama_siswa }}</td>
                                             <td>{{ $data->alamat_siswa }}</td>
-                                            <td>{{ $data->tanggal_lahir }}</td>
+                                            <td>{{ $data->tgl_lahir }}</td>
                                             <td>
                                                 <form action="{{ route('siswa.destroy', $data->id) }}" method="post">
                                                     @method('delete')

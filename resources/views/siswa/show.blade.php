@@ -26,7 +26,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="">Tanggal Lahir</label>
-                            <textarea type="text" name="content" class="form-control" readonly>{{ $siswa->tanggal_lahir }}
+                            <textarea type="text" name="content" class="form-control" readonly>{{ $siswa->tgl_lahir }}
                                 </textarea>
                         </div>
 

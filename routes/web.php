@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\JurusanController;
+use App\Http\Controllers\WaliController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +24,9 @@ Route::get('/hello', function () {
     return view('hello');
 });
 
-Route::get('/', function () {
-    return view('home');
-});
+//  Route::get('/', function () {
+//      return view('home');
+//  });
 
 Auth::routes();
 
@@ -40,3 +41,5 @@ Route::resource('jurusan', JurusanController::class);
 Route::get('/test-admin', function(){
     return view('layouts.admin');
 });
+
+Route::resource('wali', WaliController::class);

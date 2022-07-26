@@ -8,5 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Siswa extends Model
 {
     use HasFactory;
-    public $table = 'siswa';
+    public $fillable = ['nis','nama', 'alamat_siswa','tgl_lahir'];
+    public $timestamps = true;
+
+    public function wali()
+    {
+        return $this->hasOne(Wali::class, 'id_siswa');
+    }
 }

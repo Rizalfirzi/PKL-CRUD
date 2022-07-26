@@ -13,12 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('Siswa', function (Blueprint $table) {
+        Schema::create('walis', function (Blueprint $table) {
             $table->id();
-            $table->string('nis')->unique();
-            $table->string('nama_siswa');
-            $table->string('alamat_siswa');
-            $table->date('tanggal_lahir');
+            $table->string('nama');
+            $table->string('foto');
+            $table->unsignedBigInteger('id_siswa');
+            // membuat fk id_siswa yang mengacu kpd field id di table
+            // siswas
+            $table->foreign('id_siswa')->references('id')->on('siswas')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Siswa');
+        Schema::dropIfExists('walis');
     }
 };

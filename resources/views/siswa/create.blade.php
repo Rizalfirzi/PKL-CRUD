@@ -41,8 +41,8 @@
                             </div>
                             <div class="mb-3">
                                 <label for="">Tanggal Lahir</label>
-                                <input type="date"name="tanggal_lahir" class="form-control @error('tanggal_lahir') is-invalid @enderror"></input>
-                                @error('tanggal_lahir')
+                                <input type="date"name="tgl_lahir" class="form-control @error('tgl_lahir') is-invalid @enderror"></input>
+                                @error('tgl_lahir')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

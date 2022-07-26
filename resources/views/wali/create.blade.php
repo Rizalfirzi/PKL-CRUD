@@ -4,49 +4,51 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                @include('layouts._flash')
-                <div class="card border-secondary">
-                    <div class="card-header mb-3">Data Nilai </div>
-
+                @include('layouts/_flash')
+                <div class="card">
+                    <div class="card-header">
+                        Data Wali
+                    </div>
                     <div class="card-body">
-                        <form action="{{ route('nilai.update', $nilai->id) }}" method="post">
-                            @method('put')
+                        <form action="{{ route('wali.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
-                                <label for="">Nis</label>
-                                <input type="text" name="nis" value="{{ $nilai->nis }}"
-                                    class="form-control @error('nilai') is-invalid @enderror">
-                                @error('nis')
+                                <label class="form-label">Nama Wali</label>
+                                <input type="text" class="form-control  @error('nama') is-invalid @enderror"
+                                    name="nama">
+                                @error('nama')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="">Kode Mata Pelajaran</label>
-                                <textarea type="text"name="kode_mata_pelajaran" class="form-control @error('kode_mata_pelajaran') is-invalid @enderror">{{ $nilai->kode_mata_pelajaran }}
-                                </textarea>
-                                @error('kode_mata_pelajaran')
+                                <label class="form-label">Foto Wali</label>
+                                <input type="file" class="form-control  @error('foto') is-invalid @enderror"
+                                    name="foto">
+                                @error('foto')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="">Nilai</label>
-                                <textarea type="text"name="nilai" class="form-control @error('nilai') is-invalid @enderror">{{ $nilai->nilai }}
-                                </textarea>
-                                @error('nilai')
+                                <label class="form-label">Pilih Data Siswa</label>
+                                <select name="id_siswa" class="form-control @error('id_siswa') is-invalid @enderror"
+                                    id="">
+                                    @foreach ($siswa as $data)
+                                        <option value="{{ $data->id }}">{{ $data->nama_siswa }}</option>
+                                    @endforeach
+                                </select>
+                                @error('id_siswa')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                            
-
                             <div class="mb-3">
                                 <div class="d-grid gap-2">
-                                    <button class="btn btn-primary" type="submit">Simpan</button>
+                                    <button class="btn btn-primary" type="submit">Save</button>
                                 </div>
                             </div>
                         </form>

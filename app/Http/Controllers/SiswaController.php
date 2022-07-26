@@ -7,21 +7,20 @@ use Illuminate\Http\Request;
 
 class SiswaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
-        //
-        $a = Siswa::all();
-        return view('siswa.index', ['siswa' => $a]);
+        //menampilkan semua data dari model Siswa
+        $siswa = Siswa::all();
+        return view('siswa.index', compact('siswa'));
     }
 
     /**
@@ -32,7 +31,8 @@ class SiswaController extends Controller
     public function create()
     {
         //
-        return view('siswa.create');
+        $siswa = Siswa::all();
+        return view('siswa.create', compact('siswa'));
     }
 
     /**
@@ -43,22 +43,23 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validasi
         $validated = $request->validate([
-            'nis' => 'required',
-            'nama_siswa' => 'required|unique:siswa|max:255',
+            'nis' => 'required|unique:siswas|max:255',
+            'nama_siswa' => 'required',
             'alamat_siswa' => 'required',
-            'tanggal_lahir' => 'required',
+            'tgl_lahir' => 'required',
         ]);
 
         $siswa = new Siswa();
         $siswa->nis = $request->nis;
         $siswa->nama_siswa = $request->nama_siswa;
         $siswa->alamat_siswa = $request->alamat_siswa;
-        $siswa->tanggal_lahir = $request->tanggal_lahir;
+        $siswa->tgl_lahir = $request->tgl_lahir;
+        
         $siswa->save();
-        return redirect()->route('siswa.index')->with('succes', 
-            'Data berhasil dibuat!');
+        return redirect()->route('siswa.index')
+            ->with('success', 'Data berhasil dibuat!');
     }
 
     /**
@@ -69,9 +70,8 @@ class SiswaController extends Controller
      */
     public function show($id)
     {
-        //
         $siswa = Siswa::findOrFail($id);
-        return view ('siswa.show', compact('siswa'));
+        return view('siswa.show', compact('siswa'));
     }
 
     /**
@@ -82,9 +82,10 @@ class SiswaController extends Controller
      */
     public function edit($id)
     {
-        //
         $siswa = Siswa::findOrFail($id);
-        return view ('siswa.edit', compact('siswa'));
+        $guru = Guru::all();
+        return view('siswa.edit', compact('siswa', 'guru'));
+
     }
 
     /**
@@ -96,22 +97,23 @@ class SiswaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Validasi
         $validated = $request->validate([
-            'nis' => 'required',
-            'nama_siswa' => 'required|:siswa|max:255',
+            'nis' => 'required|unique:siswas|max:255',
+            'nama_siswa' => 'required',
             'alamat_siswa' => 'required',
-            'tanggal_lahir' => 'required',
+            'tgl_lahir' => 'required',
         ]);
 
-        $siswa = Siswa::findOrFail($id);
+        $siswa = new Siswa();
         $siswa->nis = $request->nis;
         $siswa->nama_siswa = $request->nama_siswa;
         $siswa->alamat_siswa = $request->alamat_siswa;
-        $siswa->tanggal_lahir = $request->tanggal_lahir;
+        $siswa->tgl_lahir = $request->tgl_lahir;
+        
         $siswa->save();
-        return redirect()->route('siswa.index')->with('succes', 
-            'Data berhasil diedit!');
+        return redirect()->route('siswa.index')
+            ->with('success', 'Data berhasil diedit!');
     }
 
     /**
@@ -122,10 +124,9 @@ class SiswaController extends Controller
      */
     public function destroy($id)
     {
-        //
         $siswa = Siswa::findOrFail($id);
         $siswa->delete();
-        return redirect()->route('siswa.index')->with('succes', 
-            'Data berhasil dihapus!');
+        return redirect()->route('siswa.index')
+            ->with('success', 'Data berhasil dihapus!');
     }
 }
